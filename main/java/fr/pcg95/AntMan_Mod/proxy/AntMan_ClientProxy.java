@@ -10,7 +10,7 @@ public class AntMan_ClientProxy extends AntMan_CommonProxy {
 	@Override
 	public void registerRender()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityAntManShrinked.class, new RenderAntManShrinked(new AntManShrinked(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAntManShrinked.class, new RenderAntManShrinked(new AntManShrinked(), 0.5F));//Lance le rendu de l'entité AntManShrinked
 	}
 
 }

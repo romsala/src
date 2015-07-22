@@ -1,6 +1,8 @@
 package fr.pcg95.AntMan_Mod.common;
 
 import java.awt.Color;
+
+import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -17,7 +19,7 @@ public class AntManMod {
 	@Instance("antmanmod")
 	public static AntManMod instance;
 	
-	@SidedProxy(clientSide = "fr.pcg95.AntMan_Mod.proxy.AntMan_ClientProxy", serverSide = "fr.pcg95.AntMan_Mod.proxy.AntMan_CommonProxy")
+	@SidedProxy(clientSide = "fr.pcg95.AntMan_Mod.proxy.AntMan_ClientProxy", serverSide = "fr.pcg95.AntMan_Mod.proxy.AntMan_CommonProxy")//Définition des classes Serveur et Client(Common= Serveur+Client)
 	public static AntMan_CommonProxy proxy;
 	
 	@EventHandler
@@ -29,7 +31,7 @@ public class AntManMod {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		EntityRegistry.registerGlobalEntityID(EntityAntManShrinked.class, "AntManShrinked", EntityRegistry.findGlobalUniqueEntityId(), new Color(255, 0, 0).getRGB(), new Color(0, 0, 0).getRGB());
+		EntityRegistry.registerGlobalEntityID(EntityAntManShrinked.class, "AntManShrinked", EntityRegistry.findGlobalUniqueEntityId(), new Color(255, 0, 0).getRGB(), new Color(0, 0, 0).getRGB());//Enregistre l'entité dans minecraft en lui trouvant un ID et avec un oeuf rouge et noir
 		EntityRegistry.registerModEntity(EntityAntManShrinked.class, "AntManShrinked", 420, this.instance, 40, 1, true);
 		proxy.registerRender();
 	}
