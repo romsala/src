@@ -1,7 +1,10 @@
 package fr.pcg95.AntMan_Mod.common;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class EntityAntManShrinked extends EntityMob {
@@ -20,6 +23,14 @@ public class EntityAntManShrinked extends EntityMob {
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(0D);//Ne peut pas attaquer lol
 		
 	}
+	
+	@Override
+	protected void attackEntity(Entity entity, float f)
+    {
+        
+    }
+
+	
 
 
 } 

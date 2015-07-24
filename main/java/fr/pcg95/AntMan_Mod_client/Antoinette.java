@@ -1,0 +1,235 @@
+package fr.pcg95.AntMan_Mod_client;
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+public class Antoinette extends ModelBase
+{
+
+    ModelRenderer antenna_1;
+    ModelRenderer antenna_1_top;
+    ModelRenderer antenna_2;
+    ModelRenderer antenna_2_top;
+    ModelRenderer head;
+    ModelRenderer headbottom;
+    ModelRenderer eye_1;
+    ModelRenderer eye_2;
+    ModelRenderer mouth_1;
+    ModelRenderer mouth_2;
+    ModelRenderer body;
+    ModelRenderer leg1;
+    ModelRenderer leg1_bottom;
+    ModelRenderer leg2;
+    ModelRenderer leg2_bottom;
+    ModelRenderer leg3;
+    ModelRenderer leg3_bottom;
+    ModelRenderer leg4;
+    ModelRenderer leg4_bottom;
+    ModelRenderer leg5;
+    ModelRenderer leg5_bottom;
+    ModelRenderer leg6;
+    ModelRenderer leg6_bottom;
+    ModelRenderer long_back_tube;
+    ModelRenderer backbody;
+
+    public Antoinette()
+    {
+    	textureWidth = 64;
+        textureHeight = 32;
+        antenna_1 = new ModelRenderer(this, 14, 23);
+        antenna_1.addBox(0.5F, -5F, -5F, 1, 1, 1);
+        antenna_1.setRotationPoint(0.0F, 21F, -6F);
+        antenna_1.setTextureSize(64, 32);
+        antenna_1.mirror = true;
+        setRotation(antenna_1, 0.0F, 0.0F, 0.0F);
+        antenna_1_top = new ModelRenderer(this, 14, 20);
+        antenna_1_top.addBox(0.5F, -6F, -6F, 1, 1, 1);
+        antenna_1_top.setRotationPoint(0.0F, 21F, -6F);
+        antenna_1_top.setTextureSize(64, 32);
+        antenna_1_top.mirror = true;
+        setRotation(antenna_1_top, 0.0F, 0.0F, 0.0F);
+        antenna_2 = new ModelRenderer(this, 14, 23);
+        antenna_2.addBox(-1.5F, -5F, -5F, 1, 1, 1);
+        antenna_2.setRotationPoint(0.0F, 21F, -6F);
+        antenna_2.setTextureSize(64, 32);
+        antenna_2.mirror = true;
+        setRotation(antenna_2, 0.0F, 0.0F, 0.0F);
+        antenna_2_top = new ModelRenderer(this, 14, 20);
+        antenna_2_top.addBox(-1.5F, -6F, -6F, 1, 1, 1);
+        antenna_2_top.setRotationPoint(0.0F, 21F, -6F);
+        antenna_2_top.setTextureSize(64, 32);
+        antenna_2_top.mirror = true;
+        setRotation(antenna_2_top, 0.0F, 0.0F, 0.0F);
+        head = new ModelRenderer(this, 0, 0);
+        head.addBox(-2F, -4F, -6F, 4, 3, 5);
+        head.setRotationPoint(0.0F, 21F, -6F);
+        head.setTextureSize(64, 32);
+        head.mirror = true;
+        setRotation(head, 0.0F, 0.0F, 0.0F);
+        headbottom = new ModelRenderer(this, 0, 9);
+        headbottom.addBox(-1F, -2.5F, -7F, 2, 1, 4);
+        headbottom.setRotationPoint(0.0F, 21F, -6F);
+        headbottom.setTextureSize(64, 32);
+        headbottom.mirror = true;
+        setRotation(headbottom, 0.0F, 0.0F, 0.0F);
+        eye_1 = new ModelRenderer(this, 14, 10);
+        eye_1.addBox(1.5F, -3F, -5.8F, 1, 1, 2);
+        eye_1.setRotationPoint(0.0F, 21F, -6F);
+        eye_1.setTextureSize(64, 32);
+        eye_1.mirror = true;
+        setRotation(eye_1, 0.0F, 0.0F, 0.0F);
+        eye_2 = new ModelRenderer(this, 14, 10);
+        eye_2.addBox(-2.5F, -3F, -5.8F, 1, 1, 2);
+        eye_2.setRotationPoint(0.0F, 21F, -6F);
+        eye_2.setTextureSize(64, 32);
+        eye_2.mirror = true;
+        setRotation(eye_2, 0.0F, 0.0F, 0.0F);
+        mouth_1 = new ModelRenderer(this, 7, 15);
+        mouth_1.addBox(-1.5F, -2F, -8F, 1, 0, 2);
+        mouth_1.setRotationPoint(0.0F, 21F, -6F);
+        mouth_1.setTextureSize(64, 32);
+        mouth_1.mirror = true;
+        setRotation(mouth_1, 0.0F, 0.0F, 0.0F);
+        mouth_2 = new ModelRenderer(this, 7, 15);
+        mouth_2.addBox(0.5F, -2F, -8F, 1, 0, 2);
+        mouth_2.setRotationPoint(0.0F, 21F, -6F);
+        mouth_2.setTextureSize(64, 32);
+        mouth_2.mirror = true;
+        setRotation(mouth_2, 0.0F, 0.0F, 0.0F);
+        body = new ModelRenderer(this, 21, 0);
+        body.addBox(-3F, -4F, -2F, 6, 4, 3);
+        body.setRotationPoint(0.0F, 19F, -3F);
+        body.setTextureSize(64, 32);
+        body.mirror = true;
+        setRotation(body, 1.570796F, 0.0F, 0.0F);
+        leg1 = new ModelRenderer(this, 0, 16);
+        leg1.addBox(-1F, 0.0F, -1F, 1, 1, 1);
+        leg1.setRotationPoint(3F, 21F, -6F);
+        leg1.setTextureSize(64, 32);
+        leg1.mirror = true;
+        setRotation(leg1, 0.0F, 0.0F, 0.0F);
+        leg1_bottom = new ModelRenderer(this, 0, 21);
+        leg1_bottom.addBox(-1F, 1.0F, -2F, 1, 2, 1);
+        leg1_bottom.setRotationPoint(3F, 21F, -6F);
+        leg1_bottom.setTextureSize(64, 32);
+        leg1_bottom.mirror = true;
+        setRotation(leg1_bottom, 0.0F, 0.0F, 0.0F);
+        leg2 = new ModelRenderer(this, 0, 16);
+        leg2.addBox(-1F, 1.0F, -1F, 1, 1, 1);
+        leg2.setRotationPoint(-2F, 20F, -6F);
+        leg2.setTextureSize(64, 32);
+        leg2.mirror = true;
+        setRotation(leg2, 0.0F, 0.0F, 0.0F);
+        leg2_bottom = new ModelRenderer(this, 0, 21);
+        leg2_bottom.addBox(-1F, 2.0F, -2F, 1, 2, 1);
+        leg2_bottom.setRotationPoint(-2F, 20F, -6F);
+        leg2_bottom.setTextureSize(64, 32);
+        leg2_bottom.mirror = true;
+        setRotation(leg2_bottom, 0.0F, 0.0F, 0.0F);
+        leg3 = new ModelRenderer(this, 0, 16);
+        leg3.addBox(-1F, 0.0F, -1F, 1, 1, 1);
+        leg3.setRotationPoint(3F, 21F, -3F);
+        leg3.setTextureSize(64, 32);
+        leg3.mirror = true;
+        setRotation(leg3, 0.0F, 0.0F, 0.0F);
+        leg3_bottom = new ModelRenderer(this, 0, 21);
+        leg3_bottom.addBox(-0.06666667F, 1.0F, -1F, 1, 2, 1);
+        leg3_bottom.setRotationPoint(3F, 21F, -3F);
+        leg3_bottom.setTextureSize(64, 32);
+        leg3_bottom.mirror = true;
+        setRotation(leg3_bottom, 0.0F, 0.0F, 0.0F);
+        leg4 = new ModelRenderer(this, 0, 16);
+        leg4.addBox(-1F, 0.0F, -1F, 1, 1, 1);
+        leg4.setRotationPoint(-2F, 21F, -3F);
+        leg4.setTextureSize(64, 32);
+        leg4.mirror = true;
+        setRotation(leg4, 0.0F, 0.0F, 0.0F);
+        leg4_bottom = new ModelRenderer(this, 0, 21);
+        leg4_bottom.addBox(-2F, 1.0F, -1F, 1, 2, 1);
+        leg4_bottom.setRotationPoint(-2F, 21F, -3F);
+        leg4_bottom.setTextureSize(64, 32);
+        leg4_bottom.mirror = true;
+        setRotation(leg4_bottom, 0.0F, 0.0F, 0.0F);
+        leg5 = new ModelRenderer(this, 0, 16);
+        leg5.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
+        leg5.setRotationPoint(2.0F, 21F, 1.0F);
+        leg5.setTextureSize(64, 32);
+        leg5.mirror = true;
+        setRotation(leg5, 0.0F, 0.0F, 0.0F);
+        leg5_bottom = new ModelRenderer(this, 0, 21);
+        leg5_bottom.addBox(0.0F, 1.0F, 1.0F, 1, 2, 1);
+        leg5_bottom.setRotationPoint(2.0F, 21F, 1.0F);
+        leg5_bottom.setTextureSize(64, 32);
+        leg5_bottom.mirror = true;
+        setRotation(leg5_bottom, 0.0F, 0.0F, 0.0F);
+        leg6 = new ModelRenderer(this, 0, 16);
+        leg6.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1);
+        leg6.setRotationPoint(-3F, 21F, 1.0F);
+        leg6.setTextureSize(64, 32);
+        leg6.mirror = true;
+        setRotation(leg6, 0.0F, 0.0F, 0.0F);
+        leg6_bottom = new ModelRenderer(this, 0, 21);
+        leg6_bottom.addBox(0.0F, 1.0F, 1.0F, 1, 2, 1);
+        leg6_bottom.setRotationPoint(-3F, 21F, 1.0F);
+        leg6_bottom.setTextureSize(64, 32);
+        leg6_bottom.mirror = true;
+        setRotation(leg6_bottom, 0.0F, 0.0F, 0.0F);
+        long_back_tube = new ModelRenderer(this, 40, 1);
+        long_back_tube.addBox(-1F, -3F, 0.0F, 2, 3, 1);
+        long_back_tube.setRotationPoint(0.0F, 20F, -3F);
+        long_back_tube.setTextureSize(64, 32);
+        long_back_tube.mirror = true;
+        setRotation(long_back_tube, 1.570796F, 3.141593F, 0.0F);
+        backbody = new ModelRenderer(this, 43, 7);
+        backbody.addBox(-3F, 2.0F, -2F, 6, 5, 4);
+        backbody.setRotationPoint(0.0F, 19F, -3F);
+        backbody.setTextureSize(64, 32);
+        backbody.mirror = true;
+        setRotation(backbody, 1.570796F, 0.0F, 0.0F);
+    }
+
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
+    {
+        super.render(entity, f, f1, f2, f3, f4, f5);
+        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        antenna_1.render(f5);
+        antenna_1_top.render(f5);
+        antenna_2.render(f5);
+        antenna_2_top.render(f5);
+        head.render(f5);
+        headbottom.render(f5);
+        eye_1.render(f5);
+        eye_2.render(f5);
+        mouth_1.render(f5);
+        mouth_2.render(f5);
+        body.render(f5);
+        leg1.render(f5);
+        leg1_bottom.render(f5);
+        leg2.render(f5);
+        leg2_bottom.render(f5);
+        leg3.render(f5);
+        leg3_bottom.render(f5);
+        leg4.render(f5);
+        leg4_bottom.render(f5);
+        leg5.render(f5);
+        leg5_bottom.render(f5);
+        leg6.render(f5);
+        leg6_bottom.render(f5);
+        long_back_tube.render(f5);
+        backbody.render(f5);
+    }
+
+    private void setRotation(ModelRenderer model, float x, float y, float z)
+    {
+    	model.rotateAngleX = x;
+        model.rotateAngleY = y;
+        model.rotateAngleZ = z;
+    }
+
+    public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
+    {
+        super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    }
+}

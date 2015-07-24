@@ -33,6 +33,8 @@ public class AntManMod {
 	{
 		EntityRegistry.registerGlobalEntityID(EntityAntManShrinked.class, "AntManShrinked", EntityRegistry.findGlobalUniqueEntityId(), new Color(255, 0, 0).getRGB(), new Color(0, 0, 0).getRGB());//Enregistre l'entité dans minecraft en lui trouvant un ID et avec un oeuf rouge et noir
 		EntityRegistry.registerModEntity(EntityAntManShrinked.class, "AntManShrinked", 420, this.instance, 40, 1, true);
+		EntityRegistry.registerGlobalEntityID(EntityAntoinette.class, "Antoinette", EntityRegistry.findGlobalUniqueEntityId(), new Color(0, 255, 0).getRGB(), new Color(0, 0, 0).getRGB());//Enregistre l'entité dans minecraft en lui trouvant un ID et avec un oeuf vert et noir
+		EntityRegistry.registerModEntity(EntityAntoinette.class, "Antoinette", 421, this.instance, 40, 1, true);
 		proxy.registerRender();
 	}
 	
