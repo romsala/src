@@ -4,13 +4,15 @@
   "name": "Ant-Man Mod",
   "description": "Scott.  You need to become the Ant-Man.",
   "version": "1.00",
-  "mcversion": "${mcversion}",
+  "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",
   "authorList": ["Pcg95"],
   "credits": "Thanks to scorpionh, Xdarwin0, romsala",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "requiredMods": [ "Forge", "iChunUtil"],
+  "dependencies": [ "iChunUtil" ],
+  "useDependencyInformation": true
 }
 ]

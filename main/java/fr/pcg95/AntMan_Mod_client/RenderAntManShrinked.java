@@ -48,8 +48,8 @@ public class RenderAntManShrinked extends RenderLiving {
     protected void preRenderCallbackAntMan(EntityAntManShrinked entity, float f)
     {
         //Resize du modèle de l'entité par un facteur 0.1
-        //GL11.glScalef(0.1F, 0.1F, 0.1F);
-    	GL11.glScalef(5F, 5F, 5F);
+        GL11.glScalef(0.1F, 0.1F, 0.1F);
+    	//GL11.glScalef(5F, 5F, 5F);
     }
 
 }
