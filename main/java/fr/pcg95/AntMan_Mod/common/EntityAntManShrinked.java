@@ -12,8 +12,8 @@ public class EntityAntManShrinked extends EntityMob {
 	public EntityAntManShrinked(World world) 
 	{
 		super(world);
-		this.setSize(0.1F,0.2F);//Resize de la hitbox: this.setSize(GL11.glScalefactor, 2*GL11.glScalefactor)
-		//this.setSize(5F,10F);
+		//this.setSize(0.1F,0.2F);//Resize de la hitbox: this.setSize(GL11.glScalefactor, 2*GL11.glScalefactor)
+		this.setSize(5F,10F);
 	}
 	
 	public void applyEntityAttributes()

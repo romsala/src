@@ -1,31 +1,28 @@
 package fr.pcg95.AntMan_Mod.common;
 
-import java.util.List;
-
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityAmbientCreature;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.gameevent.InputEvent;
 
-import net.minecraft.entity.passive.EntityHorse;
+import java.util.BitSet;
 
 public class EntityAntoinette extends EntityMob {
 	private boolean isRidden = false;
 	private float ridingSpeed = 0.4F;//variable qui controle la vitesse d'Antoinette (0.1F=vitesse de base / 1F=la mort dans ta foufoune)
+    private BitSet controlFlags;
 	
 	public EntityAntoinette(World world) {
 		super(world);
-		this.setSize(0.5F,0.5F);
+		this.setSize(0.5F, 0.5F);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -113,6 +110,48 @@ public class EntityAntoinette extends EntityMob {
         	this.isDead = true;
         }
     }
-	 
+
+//    private void AntoinetteUp()
+//    {
+//        Entity player = this.riddenByEntity;
+//        this.motionY += player.motionY ;
+//    }
+//
+//    private void AntoinetteDown()
+//    {
+//        Entity player = this.riddenByEntity;
+//        this.motionY -= player.motionY;
+//    }
+//
+//
+//
+//
+//    @SubscribeEvent
+//    public void onKeyInput(InputEvent.KeyInputEvent event) {
+//        Minecraft mc = Minecraft.getMinecraft();
+//
+//        if(this.riddenByEntity instanceof EntityPlayer){
+//            if(mc.gameSettings.keyBindSprint.getIsKeyPressed()) {
+//                System.out.println("Down");
+//                AntoinetteDown();
+//            }
+//            if(mc.gameSettings.keyBindJump.getIsKeyPressed()){
+//                AntoinetteUp();
+//                System.out.println("Up");
+//            }
+//
+//        }
+//
+//    }
+
+    public void setControlFlags(BitSet flags) {
+        controlFlags = flags;
+    }
+
+    public BitSet getControlFlags() {
+        return controlFlags;
+    }
+
+
 
 }

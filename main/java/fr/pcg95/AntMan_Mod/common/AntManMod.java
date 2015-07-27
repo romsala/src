@@ -2,6 +2,7 @@ package fr.pcg95.AntMan_Mod.common;
 
 import java.awt.Color;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -12,6 +13,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import fr.pcg95.AntMan_Mod.proxy.AntMan_CommonProxy;
+
 
 @Mod(modid = "antmanmod", name = "Ant-Man Mod", version = "1.0.0")
 
@@ -25,7 +27,7 @@ public class AntManMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		
+		FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
 	}
 	
 	@EventHandler
