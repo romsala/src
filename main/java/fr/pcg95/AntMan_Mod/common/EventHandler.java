@@ -1,8 +1,11 @@
 package fr.pcg95.AntMan_Mod.common;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.pcg95.AntMan_Mod.network.ControlMessage;
 import ichun.client.keybind.KeyEvent;
 import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.eventhandler.Event;
@@ -14,6 +17,8 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.entity.Entity;
 import fr.pcg95.AntMan_Mod.common.EntityAntoinette;
 import net.minecraft.util.MathHelper;
+
+import java.util.BitSet;
 
 
 /**
@@ -34,22 +39,21 @@ public class EventHandler {
 //        }
 //    }
 
-    @SubscribeEvent
-    public void onKeyInput(InputEvent.KeyInputEvent event) {
-        Minecraft mc = Minecraft.getMinecraft();
-        if(mc.thePlayer.ridingEntity  instanceof  EntityAntoinette)
-        {
-            Entity antoinette = mc.thePlayer.ridingEntity ;
-            if(mc.gameSettings.keyBindSprint.isPressed()){
-                AntoinetteDown(antoinette) ;
-                SendChatMessage("Down");
-            }
-            if(mc.gameSettings.keyBindJump.isPressed()) {
-                AntoinetteUp(antoinette);
-                SendChatMessage("Up");
-            }
-        }
-    }
+    private final ControlMessage cm = new ControlMessage();
+//    @SubscribeEvent
+//    public void onKeyInput(InputEvent.KeyInputEvent event) {
+//        Minecraft mc = Minecraft.getMinecraft();
+//        if(mc.thePlayer.ridingEntity  instanceof  EntityAntoinette)
+//        {
+//            Entity antoinette = mc.thePlayer.ridingEntity ;
+//            if(mc.gameSettings.keyBindSprint.isPressed()){
+//                SendChatMessage("Down");
+//            }
+//            if(mc.gameSettings.keyBindJump.isPressed()) {
+//                SendChatMessage("Up");
+//            }
+//        }
+//    }
 
     private void SendChatMessage(String msg)
 
@@ -57,19 +61,48 @@ public class EventHandler {
         Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText(msg));
     }
 
-    private void AntoinetteUp(Entity antoinette)
-    {
-        Entity player = antoinette.riddenByEntity;
-        float f2 = MathHelper.sin(antoinette.rotationYaw * (float) Math.PI / 180.0F);
-        antoinette.motionY += player.motionY *f2*0.5;
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onTick(TickEvent.PlayerTickEvent evt) {
+        Minecraft mc = Minecraft.getMinecraft();
+        BitSet flags = cm.getFlags();
+        if(mc.thePlayer.ridingEntity  instanceof EntityAntoinette) {
+//        if(!mc.gameSettings.keyBindJump.isPressed() && !mc.gameSettings.keyBindSprint.isPressed())
+//        {
+//            flags.set(0);
+//        }
+            if (mc.gameSettings.keyBindJump.getIsKeyPressed()) {
+                flags.clear();
+                flags.set(2);
+                flags.set(0);
+                //mc.thePlayer.addChatComponentMessage(new ChatComponentText(flags.toString()));
+            } else if (mc.gameSettings.keyBindSprint.getIsKeyPressed()) {
+                flags.clear();
+                flags.set(2);
+               // mc.thePlayer.addChatComponentMessage(new ChatComponentText(flags.toString()));
+            } else {
+                flags.clear();
+//                flags.set(0);
+            }
+//        flags.set(0, mc.gameSettings.keyBindJump.isPressed());
+//        flags.set(1, mc.gameSettings.keyBindSprint.isPressed());
+            if (!flags.toString().contains("{}")) {
+                AntManMod.network.sendToServer(cm);
+                Spleep(500);
+            }
+
+
+        }
     }
 
-    private void AntoinetteDown(Entity antoinette)
+    public void Spleep(int millis)
     {
-        Entity player = antoinette.riddenByEntity;
-        antoinette.motionY -= player.motionY;
+        int i = 0;
+        while(i<millis)
+        {
+            i += 1;
+        }
     }
-
 
 
 }

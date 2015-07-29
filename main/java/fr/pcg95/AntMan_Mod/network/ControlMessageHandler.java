@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.Side;
 import fr.pcg95.AntMan_Mod.common.EntityAntoinette;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.WorldServer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,13 +31,7 @@ public class ControlMessageHandler implements IMessageHandler<ControlMessage, IM
             L.warn("EntityPlayerMP was null when DragonControlMessage was received");
             return null;
         }
-//        final WorldServer playerWorldServer = sendingPlayer.getServerForPlayer();
-//        final Minecraft mc = Minecraft.getMinecraft();
-//        playerWorldServer.addScheduledTask(new Runnable() {
-//            public void run() {
-//                processMessage(message, sendingPlayer);
-//            }
-//        });
+
         processMessage(message, sendingPlayer);
 
         return null;
@@ -45,8 +40,18 @@ public class ControlMessageHandler implements IMessageHandler<ControlMessage, IM
     void processMessage(ControlMessage message, EntityPlayerMP sendingPlayer)
     {
         if (sendingPlayer.ridingEntity instanceof EntityAntoinette) {
+                //System.out.println(message.getFlags().toString());
+
             EntityAntoinette antoinette = (EntityAntoinette)sendingPlayer.ridingEntity;
             antoinette.setControlFlags(message.getFlags());
+            if(message.getFlags().toString().contains("{0, 1}"))
+            {
+                antoinette.motionY += 0.04F;
+            }
+            if(message.getFlags().toString().contains("{1}"))
+            {
+                antoinette.motionY -= 0.04F;
+            }
         }
     }
 

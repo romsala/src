@@ -3,6 +3,12 @@ package fr.pcg95.AntMan_Mod.common;
 import java.awt.Color;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import fr.pcg95.AntMan_Mod.network.ControlMessage;
+import fr.pcg95.AntMan_Mod.network.ControlMessageHandler;
+import fr.pcg95.AntMan_Mod_client.AntoinetteControl;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -18,6 +24,8 @@ import fr.pcg95.AntMan_Mod.proxy.AntMan_CommonProxy;
 @Mod(modid = "antmanmod", name = "Ant-Man Mod", version = "1.0.0")
 
 public class AntManMod {
+
+	public static SimpleNetworkWrapper network;
 	@Instance("antmanmod")
 	public static AntManMod instance;
 	
@@ -27,7 +35,7 @@ public class AntManMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
+		//FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
 	}
 	
 	@EventHandler
@@ -36,14 +44,20 @@ public class AntManMod {
 		EntityRegistry.registerGlobalEntityID(EntityAntManShrinked.class, "AntManShrinked", EntityRegistry.findGlobalUniqueEntityId(), new Color(255, 0, 0).getRGB(), new Color(0, 0, 0).getRGB());//Enregistre l'entité dans minecraft en lui trouvant un ID et avec un oeuf rouge et noir
 		EntityRegistry.registerModEntity(EntityAntManShrinked.class, "AntManShrinked", 420, this.instance, 40, 1, true);
 		EntityRegistry.registerGlobalEntityID(EntityAntoinette.class, "Antoinette", EntityRegistry.findGlobalUniqueEntityId(), new Color(0, 255, 0).getRGB(), new Color(0, 0, 0).getRGB());//Enregistre l'entité dans minecraft en lui trouvant un ID et avec un oeuf vert et noir
-		EntityRegistry.registerModEntity(EntityAntoinette.class, "Antoinette", 421, this.instance, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityAntoinette.class, "Antoinette", 422, this.instance, 40, 1, true);
 		proxy.registerRender();
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
+		network = NetworkRegistry.INSTANCE.newSimpleChannel("MyChannel");
+		network.registerMessage(ControlMessageHandler.class, ControlMessage.class, 0, Side.SERVER);
+		FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
+	}
+
+	public SimpleNetworkWrapper getNetwork() {
+		return network;
 	}
 }
 
