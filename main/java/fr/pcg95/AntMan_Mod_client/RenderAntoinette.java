@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -33,5 +34,19 @@ public class RenderAntoinette extends RenderLiving {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return texture;
+	}
+
+	//Fonction appellée automatiquement par Forge pour finaliser le rendu d'une entité
+	@Override
+	protected void preRenderCallback(EntityLivingBase entity, float f)
+	{
+		preRenderCallbackAntoinette((EntityAntoinette) entity, f);
+	}
+
+	protected void preRenderCallbackAntoinette(EntityAntoinette entity, float f)
+	{
+		//Resize du modèle de l'entité par un facteur 0.1
+		GL11.glScalef(0.1F, 0.1F, 0.1F);
+		//GL11.glScalef(5F, 5F, 5F);
 	}
 }

@@ -13,10 +13,15 @@ import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.entity.Entity;
 import fr.pcg95.AntMan_Mod.common.EntityAntoinette;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.BitSet;
 
@@ -66,6 +71,12 @@ public class EventHandler {
     public void onTick(TickEvent.PlayerTickEvent evt) {
         Minecraft mc = Minecraft.getMinecraft();
         BitSet flags = cm.getFlags();
+        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 3));
+        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100, 1));
+        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 100, 1));
+        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 100, 1));
+        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 100, 2));
+        mc.thePlayer.fallDistance = 0.0F;
         if(mc.thePlayer.ridingEntity  instanceof EntityAntoinette) {
 //        if(!mc.gameSettings.keyBindJump.isPressed() && !mc.gameSettings.keyBindSprint.isPressed())
 //        {

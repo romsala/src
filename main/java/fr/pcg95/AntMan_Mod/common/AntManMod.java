@@ -8,7 +8,6 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import fr.pcg95.AntMan_Mod.network.ControlMessage;
 import fr.pcg95.AntMan_Mod.network.ControlMessageHandler;
-import fr.pcg95.AntMan_Mod_client.AntoinetteControl;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -19,6 +18,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import fr.pcg95.AntMan_Mod.proxy.AntMan_CommonProxy;
+import net.minecraftforge.common.MinecraftForge;
 
 
 @Mod(modid = "antmanmod", name = "Ant-Man Mod", version = "1.0.0")
@@ -54,6 +54,7 @@ public class AntManMod {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel("MyChannel");
 		network.registerMessage(ControlMessageHandler.class, ControlMessage.class, 0, Side.SERVER);
 		FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
+		MinecraftForge.EVENT_BUS.register(new fr.pcg95.AntMan_Mod.common.LivingEventHandler());
 	}
 
 	public SimpleNetworkWrapper getNetwork() {

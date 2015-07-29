@@ -5,6 +5,8 @@ import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -17,7 +19,8 @@ public class EntityAntoinette extends EntityFlying {
 	
 	public EntityAntoinette(World world) {
 		super(world);
-		this.setSize(0.5F, 0.5F);
+//		this.setSize(0.5F, 0.5F);
+        this.setSize(0.05F, 0.05F);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -31,8 +34,9 @@ public class EntityAntoinette extends EntityFlying {
 	  {
 	    if (riddenByEntity == null || riddenByEntity == entityplayer)
 	    {
-	      entityplayer.mountEntity(this);
-	      isRidden = true;
+	        entityplayer.mountEntity(this);
+	        isRidden = true;
+            updateRiderPosition();
 	      return true;
 	    }
 	    else
@@ -110,6 +114,15 @@ public class EntityAntoinette extends EntityFlying {
 
     @Override
     protected void updateFallState(double p_70064_1_, boolean p_70064_3_) {}
+
+    public void updateRiderPosition()
+    {
+        if (riddenByEntity != null)
+        {
+            riddenByEntity.setPosition(posX, posY+getMountedYOffset()
+                    +riddenByEntity.getYOffset()+0.5F, posZ);
+        }
+    }
 
 
 }
