@@ -5,9 +5,11 @@ import java.awt.Color;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.pcg95.AntMan_Mod.network.ControlMessage;
 import fr.pcg95.AntMan_Mod.network.ControlMessageHandler;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -26,6 +28,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class AntManMod {
 
 	public static SimpleNetworkWrapper network;
+	public static Item itemAntoinette;
 	@Instance("antmanmod")
 	public static AntManMod instance;
 	
@@ -35,7 +38,8 @@ public class AntManMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		//FMLCommonHandler.instance().bus().register(new fr.pcg95.AntMan_Mod.common.EventHandler());
+		itemAntoinette = new ItemAntoinette().setUnlocalizedName("ItemAntoinette");
+		GameRegistry.registerItem(itemAntoinette, "ItemAntoinette");
 	}
 	
 	@EventHandler

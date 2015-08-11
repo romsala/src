@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import java.util.BitSet;
 
 public class EntityAntoinette extends EntityFlying {
-	private boolean isRidden = false;
+	public boolean isRidden = false;
 	private float ridingSpeed = 0.4F;//variable qui controle la vitesse d'Antoinette (0.1F=vitesse de base / 1F=la mort dans ta foufoune)
     private BitSet controlFlags;
 	
@@ -34,10 +34,14 @@ public class EntityAntoinette extends EntityFlying {
 	  {
 	    if (riddenByEntity == null || riddenByEntity == entityplayer)
 	    {
-	        entityplayer.mountEntity(this);
-	        isRidden = true;
-            updateRiderPosition();
-	      return true;
+            if(entityplayer.getEyeHeight() == 0.17F)
+            {
+                entityplayer.mountEntity(this);
+                isRidden = true;
+                updateRiderPosition();
+                return true;
+            }
+            else return false;
 	    }
 	    else
 	    {
