@@ -71,12 +71,6 @@ public class EventHandler {
     public void onTick(TickEvent.PlayerTickEvent evt) {
         Minecraft mc = Minecraft.getMinecraft();
         BitSet flags = cm.getFlags();
-        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 3));
-        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 100, 1));
-        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 100, 1));
-        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 100, 1));
-        mc.thePlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 100, 2));
-        mc.thePlayer.fallDistance = 0.0F;
         if(mc.thePlayer.ridingEntity  instanceof EntityAntoinette) {
 //        if(!mc.gameSettings.keyBindJump.isPressed() && !mc.gameSettings.keyBindSprint.isPressed())
 //        {
@@ -104,7 +98,18 @@ public class EventHandler {
 
 
         }
+//        if (mc.thePlayer.getEyeHeight() == -1.45F)
+//        {
+//            mc.thePlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 3));
+//            mc.thePlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 10, 1));
+//            mc.thePlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 10, 1));
+//            mc.thePlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 1));
+//            mc.thePlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 10, 2));
+//            mc.thePlayer.fallDistance = 0.0F;
+//        }
     }
+
+
 
     public void Spleep(int millis)
     {
