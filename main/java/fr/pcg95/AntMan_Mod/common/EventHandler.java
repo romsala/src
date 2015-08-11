@@ -108,29 +108,29 @@ public class EventHandler {
 //            mc.thePlayer.fallDistance = 0.0F;
 //        }
 
-        if(evt.player.getEyeHeight() == 0.17F)
-        {
-            evt.player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 3));
-            evt.player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 10, 1));
-            evt.player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 10, 1));
-            evt.player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 1));
-            evt.player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 10, 4));
-        }
-    }
-
-//    @SideOnly(Side.SERVER)
-//    @SubscribeEvent
-//    public void onTickServer (TickEvent.PlayerTickEvent evt)
-//    {
 //        if(evt.player.getEyeHeight() == 0.17F)
 //        {
 //            evt.player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 3));
 //            evt.player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 10, 1));
 //            evt.player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 10, 1));
 //            evt.player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 1));
-//            evt.player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 10, 2));
+//            evt.player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 10, 4));
 //        }
-//    }
+    }
+
+//    @SideOnly(Side.SERVER)
+    @SubscribeEvent
+    public void onTickServer (TickEvent.PlayerTickEvent evt)
+    {
+        if(evt.player.getEyeHeight() == 0.17F)
+        {
+            evt.player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 10, 3));
+            evt.player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 10, 1));
+            evt.player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 10, 1));
+            evt.player.addPotionEffect(new PotionEffect(Potion.jump.id, 10, 1));
+            evt.player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 10, 2));
+        }
+    }
 
     public void Spleep(int millis)
     {
